@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ app_name }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <div>
+                <p class="eyebrow">APEX PLATFORM DEMO</p>
+                <h1>{{ app_name }}</h1>
+                <p class="subtitle">
+                    One Python application: frontend + backend + PostgreSQL.
+                </p>
+            </div>
+            <span class="environment">{{ environment }}</span>
+        </header>
+
+        <section class="card">
+            <h2>Create a task</h2>
+            <form id="task-form">
+                <label>
+                    Title
+                    <input id="title" maxlength="200" required
+                           placeholder="Deploy application to AKS">
+                </label>
+
+                <label>
+                    Description
+                    <textarea id="description" maxlength="2000"
+                              placeholder="What needs to be done?"></textarea>
+                </label>
+
+                <button type="submit">Create task</button>
+            </form>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h2>Tasks</h2>
+                <button id="refresh" class="secondary">Refresh</button>
+            </div>
+
+            <div id="message"></div>
+            <div id="tasks" class="tasks"></div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

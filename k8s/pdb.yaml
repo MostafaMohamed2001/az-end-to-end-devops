@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: apex-app-pdb
+  namespace: apex
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: apex-app

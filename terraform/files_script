@@ -1,0 +1,6 @@
+for module in resource-group network acr aks postgresql
+do
+  touch modules/$module/main.tf
+  touch modules/$module/variables.tf
+  touch modules/$module/outputs.tf
+done

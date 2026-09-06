@@ -1,0 +1,153 @@
+:root {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+    color: #172033;
+    background: #f3f6fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: min(900px, calc(100% - 32px));
+    margin: 48px auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+}
+
+h1 {
+    margin: 5px 0 8px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.eyebrow {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.subtitle {
+    color: #687386;
+}
+
+.environment {
+    padding: 8px 12px;
+    border: 1px solid #d9e0eb;
+    border-radius: 999px;
+    background: white;
+}
+
+.card,
+.task {
+    background: white;
+    border: 1px solid #e1e7f0;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(20, 35, 60, .06);
+}
+
+.card {
+    margin-bottom: 32px;
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+label {
+    display: grid;
+    gap: 7px;
+    font-weight: 700;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: 1px solid #cfd8e6;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font: inherit;
+    background: #fbfcfe;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 15px;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    background: #172033;
+    color: white;
+}
+
+button.secondary {
+    color: #172033;
+    background: white;
+    border: 1px solid #d4dce8;
+}
+
+.section-heading,
+.task-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+.tasks {
+    display: grid;
+    gap: 14px;
+}
+
+.task h3 {
+    margin: 0 0 7px;
+}
+
+.task p {
+    color: #687386;
+    margin-bottom: 18px;
+}
+
+.task.completed h3 {
+    text-decoration: line-through;
+    opacity: .65;
+}
+
+.task-actions {
+    justify-content: flex-start;
+}
+
+.task-actions button.delete {
+    background: #fff;
+    color: #b42318;
+    border: 1px solid #f1c6c2;
+}
+
+.message {
+    margin-bottom: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid #e1e7f0;
+}

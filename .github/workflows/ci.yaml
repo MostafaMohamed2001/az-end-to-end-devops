@@ -1,0 +1,58 @@
+name: Apex CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+env:
+  ACR_NAME: apexregistry001
+  ACR_LOGIN_SERVER: apexregistry001.azurecr.io
+  IMAGE_NAME: apex-app
+  APP_DIR: app
+
+jobs:
+  ci:
+    name: Build and Push to ACR
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # 1. Checkout Source Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Login to Azure
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Login to ACR
+      - name: Login to ACR
+        run: |
+          az acr login --name $ACR_NAME
+
+      # 4. Build Docker Image
+      - name: Build Docker Image
+        run: |
+          docker build \
+            --platform linux/amd64 \
+            -t $ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }} \
+            -t $ACR_LOGIN_SERVER/$IMAGE_NAME:latest \
+            ./$APP_DIR
+
+      # 5. Push Image to ACR
+      - name: Push Image to ACR
+        run: |
+          docker push $ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }}
+          docker push $ACR_LOGIN_SERVER/$IMAGE_NAME:latest
+
+      # 6. Display Published Image
+      - name: Show Image
+        run: |
+          echo "Image pushed successfully:"
+          echo "$ACR_LOGIN_SERVER/$IMAGE_NAME:${{ github.sha }}"
